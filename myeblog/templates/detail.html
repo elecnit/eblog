@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>detail post</title>
+</head>
+<body>
+    {% extends 'base.html' %}
+
+    {%  load static %}
+    {% block title %}{{post.title}} {% endblock title %}
+    {% block content %}
+    
+    <div class="Title">
+      <a href="{% url 'detail_view' post.pk %}" class="siders"><h1 style="font-family: 'Lucida Sans Unicode';">{{post.title}}</h1></a>
+      <a href="{%  url 'category' post.category|slugify  %}" class="siders1">({{post.category}})</a>
+
+    <div class="straight-line"></div> &nbsp; by  
+       {% if post.author.profile.profile_pic %}
+       <a href="{% url 'show_profile' post.author.profile.id %}"><img class="siders1" src="{{ post.author.profile.profile_pic.url }}"  width="40px" height="40px" alt="" style="border-radius: 50%;"></a>
+        {% else %}
+        <a href="{% url 'show_profile' post.author.profile.id %}"><img class="siders1" src="{% static 'myeblog/images/default_person.jpg' %}"  width="40px" height="40px" alt="" style="border-radius: 50%;"></a> 
+        {% endif %} 
+
+       <p class="siders1">{{post.author.first_name}}-{{post.author.last_name}}</p>
+      <span style="font-style: italic;">{{post.post_date}}</span>
+    </div>
+    <hr>
+    
+    <div class="detail-container">
+       {% if  post.header_image %}
+       <img src="{{ post.header_image.url }}"  width="300px" height="300px" alt="" class="content" >
+       {% endif %}
+       <br>
+       <pre><p class="content">{{post.body}}</p></pre>
+    </div>
+  
+    {% if user.is_authenticated %}
+
+      {% if post.author.id == user.id %}
+      <div class="botton-container">
+        <a href="{% url 'post_edit' post.pk %}"><div class="botton" style="width: 100px; background: rgb(134, 22, 134);">Edit post</div></a>
+        <a href="{% url 'post_delete' post.pk %}"><div class="botton" style="background-color: rgb(216, 44, 44); width: 100;">Delete post</div></a>
+        {% endif %}
+        <form action="{% url 'like_post' post.id %}" method="POST">
+           {% csrf_token  %}
+          
+           {% if user.is_authenticated %}
+  
+             {% if liked %}
+                  <button class="btn-like" type="submit" name="post_id" value="{{ post.id }}"  style=" height: 40px; width: 40px; border: 0; "><img src="{% static 'myeblog/images/instagram-red-heart3.jpg'%}" alt="" width="30px" height="30px" style=" border-radius: 50%; border: 1px solid rgb(65, 63, 63)"></button> 
+          
+             {%  else %}
+                  <button  class="btn-like" type="submit" name="post_id" value="{{ post.id }}"  style=" height: 40px; width: 40px; border:0; "><img src="{% static 'myeblog/images/instagram-heart.png'%}" alt="" width="30px" height="30px" style=" border-radius: 50%; border: 1px solid rgb(65, 63, 63) "></button>
+    
+        
+             {% endif %}
+        
+        
+           {% endif %}
+       &nbsp; {{ total_likes  }} likes
+        <br>
+      
+        </form>
+      </div>
+     
+      
+    {% else %}
+      <a href="{% url 'login'  %}" class="botton" style="width: 70px; background: linear-gradient(to right bottom ,rgb(25, 25, 133)20%,rgb(92, 31, 92),rgb(73, 25, 33)); color: white;" >login</a> 
+    {% endif %}
+
+   
+    
+    
+  <div class="red">  
+    {% if post.author.profile.profile_pic  %}
+    <a class="upper-profile-content" href="{% url 'show_profile' post.author.profile.id %}" ><img src="{{ post.author.profile.profile_pic.url }}"  width="100px" height="100px" alt="" style="border-radius: 50%;" ></a>
+
+{% else %}
+    <a class="upper-profile-content" href="{% url 'show_profile' post.author.profile.id %}" ><img src="{% static 'myeblog/images/default_person.jpg' %}"  width="100px" height="100px" alt="" style="border-radius: 50%; border: 1px solid;" ></a> 
+{% endif %}
+    <div class="profile-container">
+      <div class="upper-profile">
+       
+        <p class="upper-profile-content1">{{ post.author.first_name }}  {{ post.author.last_name }}</p> 
+        <a class="upper-profile-content1" href="{{ post.author.profile.insta_url }}" ><img src="{% static 'myeblog/images/instagram.png' %}" alt="" width="25px" height="25px"></a>
+        <a class="upper-profile-content1" href="{{ post.author.profile.facebook_url }}" ><img src="{% static 'myeblog/images/facebook.png' %}" alt="" width="25px" height="25px"></a>
+        <a class="upper-profile-content1" href="{{ post.author.profile.whatsapp_url }}" ><img src="{% static 'myeblog/images/whatsapp.png' %}" alt="" width="25px" height="25px"></a>
+        <a class="upper-profile-content1" href="{{ post.author.profile.twitter_url }}" ><img src="{% static 'myeblog/images/twitter.png' %}" alt="" width="25px" height="25px"></a>
+      </div>
+      <div class="lowwer-profile">
+        <p class="profile-bio-container">{{post.author.profile.bio}}</p>
+      </div>  
+      </div>
+  </div>  
+ 
+  <br>
+  <br>
+    {% endblock content %}
+</body>
+</html>

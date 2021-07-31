@@ -1,0 +1,357 @@
+body{
+    padding: 0;
+    margin: 0;
+}
+
+.header{
+    height: 180px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-style: italic;
+    margin-left: 5px;
+    margin-right: 5px;
+    border-radius: 6px;
+    background:linear-gradient(to right bottom ,rgb(25, 25, 133)20%,rgb(92, 31, 92),rgb(73, 25, 33)); 
+    display: flex;
+    align-items: center;
+    box-shadow: 0 0 15px;
+    
+}
+.outter-circle{
+    margin:15px ;
+    height: 80px;
+    width: 82px;
+    border-radius: 50%;
+   
+    border: 6px solid white;
+    display: inline-flex;
+    
+    
+    
+}
+.outter-circle a{
+    color: white;
+    text-decoration: none;
+    font-size: 8px;
+    text-align: center;
+}
+
+.header-nav1{
+    text-decoration: none;
+    color: white;
+    margin-left: 300px;
+    display: inline-flex;
+
+}
+.header-nav{
+    text-decoration: none;
+    color: white;
+    margin-left: 30px;
+    display: inline-flex;
+
+}
+.header-nav1:hover{
+    text-decoration: underline #fff;
+}
+.header-nav:hover{
+    text-decoration: underline #fff;
+}
+
+.header-user-info{
+  height:60px;
+  width: 260px;  
+  position: absolute;
+  right: 10px;
+  margin-left: 30px;
+  display: flex;
+
+}
+.header-user-info1{
+    margin-left: 15px;
+    color: #fff;
+}
+
+.title-family{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif  ;
+}
+/*****this is about home page*******************************************************/
+
+.Title{
+    display: flex;
+    margin-left: 30px;
+    margin-top: 30px;
+    align-items: center
+    ;
+  
+}
+
+.siders1{
+    display: inline-flex;
+    margin-left:10px;
+    margin-right:10px;
+    font-weight: bold;
+    font-style: italic;
+    text-decoration: none;
+    font-size:22px;
+    color: black;
+   
+}
+.siders{
+    display: inline-flex;
+    text-decoration: none;
+    margin-left:50px;
+    color: black;
+}
+
+.straight-line{
+    width: 0px;
+    height:40px;
+    border: 1px solid black;
+}
+
+.post-body-container{
+    height: 200px;
+    width: 1300px;
+    margin-left: 50px;
+    margin-right: 10px;
+    border: 2px solid black;
+    overflow-y:scroll;
+    border-radius:24px;
+
+    
+}
+::-webkit-scrollbar{
+    display: none;
+}
+
+.post-body-container:hover{
+    border: 2px solid rgb(25, 25, 133); 
+}
+
+
+.post-body{
+    font-size: large;
+    font-weight:normal;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    height: 60px;
+    padding: 10px; 
+ 
+}
+
+.home-title{
+    display: inline-block;
+    position: relative;
+    font-family:'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: black;
+}
+
+.home-title::before{
+    content: "";
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color:black;
+    transform-origin:bottom left;
+    transition: transform 0.25s ease-out;
+}
+
+.home-title:hover::before{
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+/******About Categories page************************************************************************************/
+
+.cat-title{
+    display: flex;
+    align-items: center;
+}
+/*** Detail page *************************************************************************/
+
+.detail-container{
+    margin: 20px;
+    width: 1300px;
+    display: block;
+    overflow: hidden;
+    }
+
+.content{
+    display: inline-block;
+    align-items: center;
+    text-align: justify;
+    font-size: large;
+     font-weight:normal;
+     font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+   
+}
+
+.botton-container{
+    display: flex;
+    align-items: center;
+    
+}
+a {
+    text-decoration: none;
+}
+.botton{
+    border-radius: 6px;
+    display: inline-flex;
+    height: 30px;
+    width: 130px;
+    margin: 30px;
+    font-size: large;
+    background: rgb(134, 219, 134);
+    align-items: center;
+    padding-left:20px ;
+    color:black;
+   }
+
+
+.botton:hover{
+    opacity: .7;
+}
+
+.btn-like{
+    margin-left: 20px;
+}
+
+.profile-container{
+    margin-top: 25px;
+    margin-left: 10px;
+  
+    height: 104px;
+    width: 550px;
+   
+   
+    
+}
+.upper-profile{
+   display: flex;
+   align-items: center;
+   position: relative;
+   bottom: 30px;
+}
+
+.upper-profile-content1{
+     margin-left: 10px;
+    font-style: italic;
+    font-weight: bold;
+    font-size: larger;
+}
+.upper-profile-content{
+    margin-left: 10px;
+}
+.red{
+    margin-top: 10px;
+    margin-left: 8px;
+    display: flex;
+    align-items: center;
+    border: 2px solid black;
+    width: 720px;
+    border-radius: 60px;
+}
+.lowwer-profile{
+    display: flex;
+    align-items: center;
+    position: relative;
+    bottom: 30px;
+    overflow: hidden;
+ }
+ .profile-bio-container{
+     overflow: hidden;
+    font-style: italic;
+     font-family: Arial, Helvetica, sans-serif;
+
+ }
+ 
+ /*******Add post **************************************************************************/
+.form-group{
+   height: 300px;
+   width: 450px;
+   margin-left: auto;
+   margin-right: auto;
+   
+ }
+ 
+ .form-group1{
+    height: 300px;
+    width: 1300px;
+    margin-left: 30px;
+   
+  }
+  
+ .border p{
+     border: 0;
+ }
+ .border:hover{
+    border: 2px solid lightblue;
+ }
+
+ .form-control{
+     height: 30px;
+     width: 1300px;
+     border-radius: 5px;
+     margin: 5px;
+     font-size: large;
+     font-weight:normal;
+     font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+ }
+ .form-control:hover{
+    border: 2px solid rgb(25, 25, 133);
+}
+ .form-control1{
+    height: 150px;
+    border-radius: 5px;
+    width: 1300px;
+    font-size: large;
+     font-weight:normal;
+     font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    margin: 5px;
+
+}
+.form-control1:hover{
+    border: 2px solid rgb(25, 25, 133);
+}
+
+ 
+
+ .btn{
+     height: 30px;
+     width: 140px;
+ }
+
+ /****this is about Profile page************************************************************************************/
+
+ .profile-holder{
+     height: 550px;
+     width: 500px;
+     background:linear-gradient(to right bottom ,rgb(25, 25, 133)20%,rgb(92, 31, 92),rgb(73, 25, 33)); ;
+    border-radius: 15px;
+     box-shadow: 0 0 25px;
+     margin-top: 40px;
+     margin-left: auto;
+     margin-right: auto;
+    text-align: center;
+    font-family:  Geneva, Tahoma, sans-serif;
+     }
+.profile-holder-name{
+    font-size: 25px;
+    font-family:cursive;
+}
+
+.profile-holder-bio{
+      height: 150px;
+      width: 500px;
+      font-size: 18px;
+      font-family:cursive;
+      border-top: 1px solid black;
+      border-bottom: 1px solid black;
+      overflow: hidden;
+}
+.profile-holder-linkes{
+    position: relative;
+    bottom: -30px;
+   
+}

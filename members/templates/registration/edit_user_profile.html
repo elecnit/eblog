@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>edit profile</title>
+</head>
+<body>
+    {% extends 'base.html' %}
+    
+    
+    {% block content %}
+    <h1 class="title-family">Edit Profile...</h1>
+    <div class="form-group1">   
+        
+        {% if user.is_authenticated %}
+        {% if user.id == profile.user.id %}
+         <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+      <h2>Bio</h2> {{ form.bio }}
+      <h2>Profile picture</h2> {{ form.profile_pic }}
+      <h2>Website link</h2>    {{ form.website_url}}
+      <h2>What's app link</h2>    {{ form.whatsapp_url}}
+      <h2>Facebook link</h2>    {{ form.facebook_url}}
+      <h2>Instagram link</h2>    {{ form.insta_url}}
+      <h2>Twitter link</h2>    {{ form.twitter_url}}
+       <br>
+       <br>
+        <button  style="background: linear-gradient(to right bottom ,rgb(25, 25, 133)20%,rgb(153, 31, 153)); height: 30px; width: 140px; border: 0; border-radius: 6px; color: white;">Update Profile Page</button>
+        <br>
+         <br>
+        {% else %}
+    your not correct user
+    {% endif %}
+        {% else %}
+        your not able to add post
+        {% endif %}
+    </form>
+    </div>
+    <br>
+    {% endblock content %}
+</body>
+</html>

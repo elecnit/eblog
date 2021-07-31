@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit</title>
+</head>
+<body>
+    {% extends 'base.html' %}
+
+    {% block content %}
+    <h1 class="title-family">Edit post...</h1>
+    <br>
+    <br>
+    {% if user.is_authenticated %}
+      {% if post.author.id == user.id %}
+       <div class="form-group1">   
+          <form action="" method="POST">
+            {% csrf_token %}
+            {{ form.as_p  }}
+            <button style="background:linear-gradient(to right bottom ,rgb(25, 25, 133)20%,rgb(110, 20, 110),rgb(73, 25, 33)); height: 30px; width: 70px; border: 0; border-radius: 6px; color: white;">Update</button>
+         </form>
+       </div>
+      {% else %}
+        you're not allowed here..
+      {% endif %}
+    {% else %}
+    your not able edit this
+    {% endif %}
+
+    {% endblock content %}
+</body>
+</html>

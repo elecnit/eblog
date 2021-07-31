@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Bio Profile</title>
+</head>
+<body>
+    {% extends 'base.html' %}
+    {% load static %}
+    {% block content %}
+  
+   <div class="profile-holder">
+    <h1>Profile</h1>
+    
+    <div class="profile-holder-content">
+      {% if page_user.profile_pic  %}
+      <br> <img  src="{{ page_user.profile_pic.url }}"  width="160px" height="160px" alt="" style="border-radius: 50%;">
+      {% else %}
+      <br>  <img src="{% static 'myeblog/images/default_person.jpg' %}"  width="160px" height="160px" alt="" style="border-radius: 50%;"> 
+      {% endif %}
+    </div>
+      <div class="profile-holder-name"><p>{{ page_user.user.first_name }}
+      {{ page_user.user.last_name }}</p></div>
+      
+      <div class="profile-holder-bio"><p>{{ page_user.user.profile.bio }}</p></div>
+      
+      <div class="profile-holder-linkes">
+      <a href="{{ page_user.insta_url }}"><img src="{% static 'myeblog/images/instagram.png' %}" alt="" width="30px" height="30px"></a>
+      <a href="{{ page_user.facebook_url }}"><img src="{% static 'myeblog/images/facebook.png' %}" alt="" width="30px" height="30px"></a>
+      <a href="{{ page_user.whatsapp_url }}"><img src="{% static 'myeblog/images/whatsapp.png' %}" alt="" width="30px" height="30px"></a>
+      <a href="{{ page_user.twitter_url }}"><img src="{% static 'myeblog/images/twitter.png' %}" alt="" width="30px" height="30px"></a>
+    </div>
+   
+  </div>
+    
+    <br>
+    <br>
+    <br>
+     {% endblock content %}
+</body>
+</html>

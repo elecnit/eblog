@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add post</title>
+</head>
+<body>
+    {% extends 'base.html' %}
+
+    {% block content %}
+ 
+    <h1 class="title-family">Add post...</h1>
+    <br>
+    <br>
+    <div class="form-group1">   
+        {% if user.is_authenticated %}
+         <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h2>Title</h2> {{ form.title }}
+        <h2>Category</h2> {{ form.category }}
+        <h2>Body</h2> {{ form.body }}
+        <h2>Snippet</h2> {{ form.snippet }}
+        <h2>Header image</h2> {{ form.header_image }}
+        <br>
+        <br>
+        <button  style="background:linear-gradient(to right bottom ,rgb(25, 25, 133)20%,rgb(110, 20, 110),rgb(73, 25, 33)); height: 30px; width: 70px; border: 0; border-radius: 6px; color: white;">Post</button>
+        {% else %}
+        your not able to add post
+        {% endif %}
+        <br>
+        <br>
+    </form>
+    </div>
+   
+    {% endblock content %}
+</body>
+</html>

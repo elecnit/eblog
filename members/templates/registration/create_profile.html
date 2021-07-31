@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>create profile</title>
+</head>
+<body>
+    {% extends 'base.html' %}
+
+    {% block content %}
+ 
+    <h1 class="title-family">Create profile...</h1>
+    <br>
+    <br>
+    <div class="form-group1">   
+        {% if user.is_authenticated %}
+         <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p  }}
+        <button  style="background: linear-gradient(to right bottom ,rgb(25, 25, 133)20%,rgb(148, 27, 148),rgb(73, 25, 33)); height: 30px; width: 140px; border: 0; border-radius: 6px; color: white;">Create Profile</button>
+         <br>
+         <br>
+        {% else %}
+        your not able to Create Profile you have to login first
+        {% endif %}
+    </form>
+    </div>
+    
+    {% endblock content %}
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>delete post</title>
+</head>
+<body>
+    {% extends 'base.html' %}
+
+    {% block content %}
+   
+    {% if user.is_authenticated %}
+     {% if post.author.id == user.id %}
+     
+       <div class="form-group"> 
+        <h1 class="title-family">Delete post...</h1>
+        <br>
+        <br>  
+          <form action="" method="POST">
+          {% csrf_token %}
+          <b><h2>Are you sure you want to delete  {{post.title}}  post ?</h2></b>
+          <button style="background-color: rgb(228, 42, 42); height: 30px; width: 70px; border: 0; border-radius: 6px;">Delete</button>
+      {% else %}
+      you're not allowed here...
+     {% endif %}    
+    {% else %}
+    your not able to delete post
+    {% endif %}    
+    </form>
+    </div>
+    {% endblock content %}
+</body>
+</html>

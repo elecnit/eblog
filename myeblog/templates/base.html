@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>index</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'myeblog/css/design.css' %}">
+</head>
+<body>
+ 
+    <div class="header">
+      
+        <div class="outter-circle"><a href="{% url 'home' %}"><h1><span style="font-size: 40px; margin-left: 2px; font-family:  monospace; font-style:italic;">E</span>~Bolg</h1></a></div>
+        {% if user.is_authenticated %}  
+            <a class="header-nav1" href="{% url 'logout' %}">Logout</a>
+         {% if user.profile.id %}
+            <a class="header-nav" href="{% url 'add_post' %}">add post</a>
+            
+            <a class="header-nav" href="{% url 'add_category' %}">add category</a>
+            <a class="header-nav" href="{% url 'edit_settings'  %}">Edit settings</a>
+            <a class="header-nav" href="{% url 'edit_profile' user.profile.id %}">Edit Profile</a>
+            <a class="header-nav" href="{% url 'show_profile' user.profile.id %}">Show Profile Page</a>
+         {% else %}
+            <a class="header-nav" href="{% url 'create_profile' %}">Create Profile</a>
+         
+         {% endif %}
+         <div class="header-user-info">
+         {% if user.profile.profile_pic %}
+         <img  class="header-user-info1"  src="{{ user.profile.profile_pic.url }}" alt="" width="50px" height="50px" style="border-radius: 50%;">
+         {% else %}
+        <img class="header-user-info1" src="{% static 'myeblog/images/default_person.jpg' %}" alt=""  width="50px" height="50px"  style="border-radius: 50%;">
+          {% endif %} 
+        <i><p class="header-user-info1" >{{ user.first_name }} {{user.last_name}}</p></i> 
+      </div>
+         {% else %}
+         <a class="header-nav1" href="{% url 'register' %}">Register</a>
+         <a class="header-nav" href="{% url 'login' %}">Login</a>
+       {% endif %} 
+      
+    </div>
+         {% block content  %}
+         {% endblock content %}
+</body>
+</html>

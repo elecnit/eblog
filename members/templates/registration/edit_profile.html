@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>edit settings</title>
+</head>
+<body>
+    {% extends 'base.html' %}
+
+    {% block content %}
+    <h1 class="title-family">Edit Settings...</h1>
+    <br>
+    {% if user.is_authenticated %}
+    
+  
+   
+    <br>
+    <div class="form-group1">   
+         <form action="" method="POST">
+        {% csrf_token %}
+    
+       <h2>Username</h2> {{ form.username }}
+       <h2>First name</h2> {{ form.first_name }}
+       <h2>Last name</h2> {{ form.last_name }}
+       <h2>Email</h2> {{ form.email }}
+       <h2>Password</h2>  <a href="{% url 'change_password' %}">change password</a>
+       <h2>last_login</h2> {{ form.last_login }}
+       {{ form.errors }}
+       {{ form.non_field.errors }}
+       <br>
+       <br>
+       <br>
+        <button  style="background:linear-gradient(to right bottom ,rgb(25, 25, 133)20%,rgb(153, 31, 153)); color: white; height: 30px; width: 140px; border: 0; border-radius: 6px;">Update profile</button>
+     
+    </form>
+    </div>
+    <br>
+    <br>
+    {% else %}
+    your not allowed here 
+    {% endif %}
+    <br>
+    <br>
+    {% endblock content %}
+</body>
+</html>

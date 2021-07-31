@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>registration</title>
+</head>
+<body>
+    {% extends 'base.html' %}
+
+    {% block content %}
+    <h1 class="title-family">Register...</h1>
+    <br>
+    <br>
+    <div class="form-group1">   
+         <form action="" method="POST">
+        {% csrf_token %}
+      <h2>username</h2> {{ form.username}}
+      <h2>First name</h2> {{ form.first_name }}
+      <h2>Last name</h2> {{ form.last_name }}
+      <h2>Email</h2> {{ form.email }}
+      <h2>Password</h2> {{ form.password1 }}
+      <h2>Conform password</h2> {{ form.password2 }}
+      <h3>{{ form.non_field.errors }}</h3>
+      <h3>{{ form.errors}}</h3>
+      <h3>{{ form.help_text }}</h3>
+        <button  style="background: linear-gradient(to right bottom ,rgb(25, 25, 133)20%,rgb(153, 31, 153));  height: 30px; width: 70px; border: 0; border-radius: 6px; color: white;">Register</button>
+        <br>
+         <br>
+    </form>
+    </div>
+    {% endblock content %}
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Category</title>
+</head>
+<body>
+    {% extends 'base.html' %}
+
+    {% block content %}
+ 
+    
+    <div class="form-group">  
+        <h1 class="title-family">Add Category...</h1>
+        <br>
+        <br> 
+        {% if user.is_authenticated %}
+         <form action="" method="POST">
+        {% csrf_token %}
+        {{ form.as_p  }}
+        <button style="background:linear-gradient(to right bottom ,rgb(25, 25, 133)20%,rgb(110, 20, 110),rgb(73, 25, 33)); ;  height: 30px; width: 140px; border: 0; border-radius: 6px; color: white;">Add Category</button>
+        {% else %}
+        your not able to add post
+        {% endif %}
+    </form>
+    </div>
+    {% endblock content %}
+</body>
+</html>

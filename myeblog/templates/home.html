@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>home</title>
+</head>
+<body>
+    {% extends 'base.html' %}
+    {% load static %}
+    {% block content %}
+    {% for post in object_list %}
+    
+    <div class="Title">
+           <a href="{% url 'detail_view' post.pk %}" class="siders"><h1 class="home-title">{{post.title}}</h1></a>
+           <a href="{%  url 'category' post.category|slugify  %}" class="siders1">({{post.category}})</a>
+   
+      <div class="straight-line"></div> &nbsp; by  
+            {% if post.author.profile.profile_pic %}
+            <a href="{% url 'show_profile' post.author.profile.id %}"><img class="siders1" src="{{ post.author.profile.profile_pic.url }}"  width="40px" height="40px" alt="" style="border-radius: 50%; border: 1px solid black;"></a>
+             {% else %}
+             <a href="{% url 'show_profile' post.author.profile.id %}"><img class="siders1" src="{% static 'myeblog/images/default_person.jpg' %}"  width="40px" height="40px" alt="" style="border-radius: 50%; border: 1px solid black;"></a> 
+             {% endif %} 
+   
+       <p class="siders1">{{post.author.first_name}} {{post.author.last_name}}</p>
+       <span style="font-style: italic;">{{post.post_date}}</span>
+    </div>
+   
+   
+        
+   
+        <div class="post-body-container">
+            {% if  post.header_image %}
+            <img src="{{ post.header_image.url }}"  width="200px" height="200px" alt="" class="content" >
+            {% endif %}
+            <pre><p class="post-body">{{post.body}}</p></pre>
+         </div>
+          
+    {% endfor %}
+    {% endblock content %}
+</body>
+</html>
