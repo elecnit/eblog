@@ -1,1 +1,1 @@
-web: gunicorn eblog.wsgi
+web: gunicorn  eblog.wsgi
